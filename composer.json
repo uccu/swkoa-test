@@ -1,0 +1,23 @@
+{
+    "name": "uccu/swkoa-test",
+    "description": "swkoa test project",
+    "license": "MIT",
+    "authors": [{
+        "name": "pzcat",
+        "email": "cat@4moe.com"
+    }],
+    "require": {
+        "php": ">=7.3.0",
+        "uccu/swkoa": "dev-master",
+        "uccu/swkoa-config": "dev-master",
+        "uccu/swkoa-log": "dev-master"
+    },
+    "require-dev": {
+        "swoole/ide-helper": "^4.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "App"
+        }
+    }
+}
