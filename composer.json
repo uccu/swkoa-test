@@ -8,9 +8,13 @@
     }],
     "require": {
         "php": ">=7.3.0",
-        "uccu/swkoa": "dev-master",
+        "ext-swoole": ">=4.4.4",
+        "uccu/swkoa-plugin": "^0.1",
         "uccu/swkoa-config": "dev-master",
-        "uccu/swkoa-log": "dev-master"
+        "uccu/swkoa-log": "dev-master",
+        "uccu/swkoa-http": "dev-master",
+        "uccu/swkoa-server": "dev-master",
+        "uccu/swkoa-middleware": "dev-master"
     },
     "require-dev": {
         "swoole/ide-helper": "^4.7"

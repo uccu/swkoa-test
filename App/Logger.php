@@ -2,22 +2,17 @@
 
 namespace App;
 
-use Uccu\SwKoaLog\Log;
-use Uccu\SwKoa\Logger as SwKoaLoggerBase;
+use Psr\Log\LogLevel;
+use Uccu\SwKoaLog\Logger as SwKoaLogLogger;
 
 
-class Logger extends Log implements SwKoaLoggerBase
+class Logger extends SwKoaLogLogger
 {
 
     public function __construct()
     {
     }
 
-
-    public static function info($logInfo, string $tag = 'master', int $level = Log::LEVEL_INFO)
-    {
-        return self::sendToLogSocket($logInfo, $tag, $level);
-    }
 
     protected function getLogDir($recv): string
     {
@@ -27,7 +22,9 @@ class Logger extends Log implements SwKoaLoggerBase
     protected function getLogFileName($recv): string
     {
         $name = 'info';
-        if ($recv->level === self::LEVEL_ERROR) {
+        if (!in_array($recv->level, [
+            LogLevel::EMERGENCY, LogLevel::ALERT, LogLevel::CRITICAL, LogLevel::ERROR
+        ])) {
             $name = 'error';
         }
         return  date('Ymd') . '-' . $name  . '.log';

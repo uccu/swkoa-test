@@ -3,6 +3,7 @@
 
 return [
     "TIMEZONE" => "PRC",
-    "PORTS" => "6001,6002,6003,6004"
+    "HOST" => "127.0.0.1",
+    "WORKER_NUM" => 1,
 
 ];

@@ -3,9 +3,8 @@
 namespace App;
 
 use Uccu\SwKoaConfig\Config as SwKoaConfig;
-use Uccu\SwKoa\Config as BaseSwKoaConfig;
 
-class Config extends SwKoaConfig implements BaseSwKoaConfig
+class Config extends SwKoaConfig
 {
 
     public function getApp()

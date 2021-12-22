@@ -3,20 +3,24 @@
 namespace App\Middleware;
 
 use App\Logger;
-use Uccu\SwKoa\Middleware;
+use Psr\Log\LogLevel;
+use Uccu\SwKoaMiddleware\Middleware;
 use Uccu\SwKoa\Context;
+use Uccu\SwKoaServer\App;
 
 class Teck implements Middleware
 {
-    public function handle(Context $ctx, callable $next)
+
+    public function handle($ctx, callable $next)
     {
+
         $ctx->response->end("ok");
         $next();
 
-        $logInfo = Logger::newLog('http');
+        $logInfo = App::$logger->newLog(LogLevel::INFO, "test");
         $logInfo->addParam(Logger::newLogParam($ctx->request->server['request_uri']));
         $logInfo->addParam(Logger::newLogParam(' '));
         $logInfo->addParam(Logger::newLogParam('ok'));
-        Logger::info($logInfo);
+        App::$logger->info($logInfo);
     }
 }
